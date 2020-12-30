@@ -2,7 +2,9 @@ package com.study.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
@@ -14,5 +16,12 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
+	@RequestMapping(value = "/{firstName}/{lastName}", method = RequestMethod.GET)
+	public String hello(
+			@PathVariable() String firstName
+			, @PathVariable() String lastName
+	){
+		return String.format("{\"message\": \"Hello %s %s\"}", firstName, lastName);
+	}
 
 }
