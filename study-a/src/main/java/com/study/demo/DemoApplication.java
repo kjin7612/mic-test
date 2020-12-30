@@ -16,11 +16,13 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
+//	@RequestMapping(value = "/{firstName}/{lastName}", method = RequestMethod.GET)
 	@RequestMapping(value = "/{firstName}/{lastName}", method = RequestMethod.GET)
 	public String hello(
-			@PathVariable() String firstName
-			, @PathVariable() String lastName
+			@PathVariable("firstName") String firstName
+			, @PathVariable("lastName") String lastName
 	){
+//		return String.format("{\"message\": \"Hello %s %s\"}", firstName, lastName);
 		return String.format("{\"message\": \"Hello %s %s\"}", firstName, lastName);
 	}
 
